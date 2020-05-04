@@ -50,7 +50,7 @@ const Dashboard: React.FC = () => {
     }
 
     loadTransactions();
-  }, [transactions]);
+  }, []);
 
   return (
     <>
@@ -63,7 +63,6 @@ const Dashboard: React.FC = () => {
               <img src={income} alt="Income" />
             </header>
             <h1 data-testid="balance-income">
-              R$
               {formatValue(Number(balance.income))}
             </h1>
           </Card>
@@ -73,7 +72,6 @@ const Dashboard: React.FC = () => {
               <img src={outcome} alt="Outcome" />
             </header>
             <h1 data-testid="balance-outcome">
-              R$
               {formatValue(Number(balance.outcome))}
             </h1>
           </Card>
@@ -83,7 +81,6 @@ const Dashboard: React.FC = () => {
               <img src={total} alt="Total" />
             </header>
             <h1 data-testid="balance-total">
-              R$
               {formatValue(Number(balance.total))}
             </h1>
           </Card>
@@ -107,28 +104,13 @@ const Dashboard: React.FC = () => {
 
                   <td className={`${transaction.type}`}>
                     {transaction.type === 'income'
-                      ? `R$
-                    ${transaction.formattedValue}`
-                      : `- R$
-                    ${transaction.formattedValue}`}
+                      ? `${transaction.formattedValue}`
+                      : `- ${transaction.formattedValue}`}
                   </td>
                   <td>{transaction.category.title}</td>
                   <td>{transaction.formattedDate}</td>
                 </tr>
               ))}
-
-              {/* <tr>
-                <td className="title">Computer</td>
-                <td className="income">R$ 5.000,00</td>
-                <td>Sell</td>
-                <td>20/04/2020</td>
-              </tr>
-              <tr>
-                <td className="title">Website Hosting</td>
-                <td className="outcome">- R$ 1.000,00</td>
-                <td>Hosting</td>
-                <td>19/04/2020</td>
-              </tr> */}
             </tbody>
           </table>
         </TableContainer>
